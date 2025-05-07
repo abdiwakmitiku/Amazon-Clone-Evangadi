@@ -73,6 +73,7 @@
   justify-content: center;
   max-width: 450px;
   gap: 10px;
+  padding-right: 20px;
 }
 .order__container a {
   text-decoration: none;
