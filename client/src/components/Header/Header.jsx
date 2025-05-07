@@ -2,7 +2,8 @@ import React from "react";
 import classes from "./Header.module.css";
 import { FaSearch } from "react-icons/fa";
 import { SlLocationPin } from "react-icons/sl";
-import { BiCartAdd } from "react-icons/bi";
+import { BiCart } from "react-icons/bi";
+import LowerHeader from "./LowerHeader";
 
 function Header() {
   return (
@@ -20,8 +21,8 @@ function Header() {
             </a>
             <div className={classes.delivery}>
               {/*delivery*/}
-              <span>
-                <SlLocationPin />
+              <span className="loc">
+                <SlLocationPin size={17} />
               </span>
               <span>
                 <div>
@@ -46,17 +47,14 @@ function Header() {
                 src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1024px-Flag_of_the_United_States.svg.png"
                 alt=""
               />
-              <section>
+              <select name="" id="">
                 <option value="">EN</option>
-              </section>
+              </select>
             </a>
-
             {/* three components*/}
             <a href="">
-              <div>
-                <p>Sign In</p>
-                <span>Account & Lists</span>
-              </div>
+              <p>Sign In</p>
+              <span>Account & Lists</span>
             </a>
             {/*orders*/}
             <a href="">
@@ -64,13 +62,14 @@ function Header() {
               <span>& Orders</span>
             </a>
             {/* cart */}
-            <a to={"/cart"}>
-              <BiCartAdd />
+            <a href="" className={classes.cart}>
+              <BiCart size={35} />
               <span>0</span>
             </a>
           </div>
         </div>
       </section>
+      <LowerHeader />
     </>
   );
 }
