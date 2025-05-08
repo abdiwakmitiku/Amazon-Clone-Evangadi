@@ -37,7 +37,7 @@ function Header() {
             <select name="" id="">
               <option value="">All</option>
             </select>
-            <input type="text" />
+            <input type="text" placeholder="Search Amazon" />
             <FaSearch size={25} />
           </div>
           {/*right side link*/}
