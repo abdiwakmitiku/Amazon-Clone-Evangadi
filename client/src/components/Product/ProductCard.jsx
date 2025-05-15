@@ -2,16 +2,17 @@ import React from "react";
 import { Rating } from "@mui/material";
 import CurrencyFormat from "../CurrencyFormat/CurrencyFormat";
 import classes from "./../Product/Product.module.css";
+import { Link } from "react-router";
 
 function ProductCard({ product }) {
-  const { image, title, rating, price } = product;
+  const { image, title, id, rating, price } = product;
   function truncate(str, n) {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
   }
   return (
     <>
       <div className={classes.card__container}>
-        <a href="">
+        <Link to={`/products/${id}`}>
           <img src={image} alt="" />
           <div>
             <h3>{truncate(title, 45)}</h3>
@@ -27,7 +28,7 @@ function ProductCard({ product }) {
             </div>
             <button className={classes.button}>Add to Cart</button>
           </div>
-        </a>
+        </Link>
       </div>
     </>
   );
