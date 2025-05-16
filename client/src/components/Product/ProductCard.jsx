@@ -4,14 +4,18 @@ import CurrencyFormat from "../CurrencyFormat/CurrencyFormat";
 import classes from "./../Product/Product.module.css";
 import { Link } from "react-router";
 
-function ProductCard({ product }) {
+function ProductCard({ product, flex }) {
   const { image, title, id, rating, price } = product;
   function truncate(str, n) {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
   }
   return (
     <>
-      <div className={classes.card__container}>
+      <div
+        className={`${classes.card__container} ${
+          flex ? classes.product_flexed : ""
+        } `}
+      >
         <Link to={`/products/${id}`}>
           <img src={image} alt="" />
           <div>

@@ -7,7 +7,7 @@
   position: relative;
 }
 .card__container a {
-    text-decoration: none;
+  text-decoration: none;
 }
 .card__container:hover .button {
   display: block;
@@ -51,4 +51,33 @@
 }
 .products_container section {
   margin: 0 auto;
+}
+.product_flexed {
+  box-shadow: none;
+  height: auto;
+  display: flex !important;
+  gap: 50px;
+  margin: 0 auto; /*NOT MUST*/
+}
+.product_flexed h3 {
+  padding: 20px 0px;
+}
+.product_flexed .button {
+  display: block;
+  position: static;
+  width: 150px;
+  margin-right: 40px;
+}
+.product_flexed {
+  height: 50vh;
+}
+.product_flexed img {
+  width: 300px !important;
+  height: auto;
+}
+@media screen and (max-width: 768px) {
+  .product_flexed {
+    display: flex;
+    flex-direction: column;
+  }
 }
