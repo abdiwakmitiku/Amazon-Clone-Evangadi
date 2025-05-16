@@ -1,10 +1,17 @@
 import React from "react";
-import { ScaleLoader } from "react-spinners";
+import { ClipLoader } from "react-spinners";
 
 function Loader() {
   return (
-    <div>
-      <ScaleLoader color="rgba(54, 215, 183, 1)" />
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "50vh",
+      }}
+    >
+      <ClipLoader color="rgba(54, 215, 183, 1)" />
     </div>
   );
 }
