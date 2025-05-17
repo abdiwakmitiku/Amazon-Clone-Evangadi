@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Rating } from "@mui/material";
 import CurrencyFormat from "../CurrencyFormat/CurrencyFormat";
 import classes from "./../Product/Product.module.css";
 import { Link } from "react-router";
+import { DataContext } from "../DataProvider/DataProvider";
+import { Type } from "../../Utility/action.type";
 
 function ProductCard({ product, flex, renderDesc }) {
   const { image, title, id, rating, price, description } = product;
+
+  const [state, dispatch] = useContext(DataContext);
+
+  const addToCart = () => {
+    dispatch({
+      type: Type.ADD_TO_BASKET,
+      item: {
+        image,
+        title,
+        id,
+        rating,
+        price,
+        description,
+      },
+    });
+  };
+
   function truncate(str, n) {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
   }
@@ -26,7 +45,7 @@ function ProductCard({ product, flex, renderDesc }) {
           ) : (
             <h3>{truncate(title, 45)}</h3>
           )}
-          {renderDesc && <div style={{ width: "650px" }}>{description}</div>}
+          {renderDesc && <div style={{ width: "600px" }}>{description}</div>}
           <div className={classes.rating}>
             <Rating value={rating?.rate} precision={0.1} />
 
@@ -35,7 +54,7 @@ function ProductCard({ product, flex, renderDesc }) {
           <div>
             <CurrencyFormat amount={price} />
           </div>
-          <button className={classes.button}>Add to Cart</button>
+          <button className={classes.button} onClick={addToCart}>Add to Cart</button>
         </div>
       </div>
     </>
