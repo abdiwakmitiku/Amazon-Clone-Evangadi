@@ -57,7 +57,7 @@
   height: auto;
   display: flex !important;
   gap: 50px;
-  margin: 0 auto; /*NOT MUST*/
+  margin: 0 20%; /*NOT MUST*/
 }
 .product_flexed h3 {
   padding: 20px 0px;

@@ -12,28 +12,31 @@ function ProductCard({ product, flex, renderDesc }) {
   return (
     <>
       <div
+        style={{ paddingTop: "60px" }}
         className={`${classes.card__container} ${
           flex ? classes.product_flexed : ""
         } `}
       >
         <Link to={`/products/${id}`}>
           <img src={image} alt="" />
-          <div>
-            {renderDesc?(<h3>{(title)}</h3>):(<h3>{truncate(title, 45)}</h3>)}
-            {renderDesc && <div style={{maxWidth:"750px"}}>{description}</div>}
-            <div className={classes.rating}>
-              {/* rating */}
-              <Rating value={rating?.rate} precision={0.1} />
-              {/* count */}
-              <small>{rating?.count}</small>
-            </div>
-            <div>
-              {/* price */}
-              <CurrencyFormat amount={price} />
-            </div>
-            <button className={classes.button}>Add to Cart</button>
-          </div>
         </Link>
+        <div>
+          {renderDesc ? (
+            <h3 style={{ fontSize: "4vh" }}>{title}</h3>
+          ) : (
+            <h3>{truncate(title, 45)}</h3>
+          )}
+          {renderDesc && <div style={{ width: "650px" }}>{description}</div>}
+          <div className={classes.rating}>
+            <Rating value={rating?.rate} precision={0.1} />
+
+            <small>{rating?.count}</small>
+          </div>
+          <div>
+            <CurrencyFormat amount={price} />
+          </div>
+          <button className={classes.button}>Add to Cart</button>
+        </div>
       </div>
     </>
   );
