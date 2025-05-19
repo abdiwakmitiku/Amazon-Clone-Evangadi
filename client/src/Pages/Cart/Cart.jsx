@@ -6,7 +6,7 @@ import ProductCard from "../../components/Product/ProductCard";
 import CurrencyFormat from "../../components/CurrencyFormat/CurrencyFormat";
 import { Link } from "react-router";
 import { Type } from "../../Utility/action.type";
-import { IoIosArrowUp,IoIosArrowDown} from "react-icons/io";
+import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 
 function Cart() {
   const [{ basket, user }, dispatch] = useContext(DataContext);
@@ -28,54 +28,79 @@ function Cart() {
   };
 
   return (
-    <LayOut>
-      <section className={classes.container}>
-        <div className={classes.cart_container}>
-          <h2>Hello</h2>
-          <h3>Your Shopping Basket</h3>
-          <hr />
-          {basket?.length == 0 ? (
-            <p>Opps! No Item in Your Cart</p>
-          ) : (
-            basket?.map((item, i) => {
-              return (
-                <section className={classes.cart_product}>
-                  <ProductCard
-                    renderAdd={false}
-                    key={i}
-                    product={item}
-                    renderDesc={true}
-                    flex={true}
-                  />
-                  <div className={classes.btn.container}>
-                    <button className={classes.btn} onClick={() => increment(item)}>
-                      <IoIosArrowUp size={20}/>
-                    </button>
-                    <span>{item.amount}</span>
-                    <button className={classes.btn} onClick={() => decrement(item.id)}>
-                      <IoIosArrowDown size={20}/>
-                    </button>
+    <>
+      <LayOut>
+        <section className={classes.container}>
+          <div className={classes.cart_container}>
+            <h2>Hello</h2>
+            <h3>Your Shopping Basket</h3>
+            <hr />
+            {basket?.length == 0 ? (
+              <p>Opps! No Item in Your Cart</p>
+            ) : (
+              basket?.map((item, i) => {
+                return (
+                  <div className={classes.cart_product}>
+                    <ProductCard
+                      renderAdd={false}
+                      key={i}
+                      product={item}
+                      renderDesc={true}
+                      flex={true}
+                    />
+                    <div className={classes.btn.container}>
+                      <button
+                        className={classes.btn}
+                        onClick={() => increment(item)}
+                      >
+                        <IoIosArrowUp size={20} />
+                      </button>
+                      <span>{item.amount}</span>
+                      <button
+                        className={classes.btn}
+                        onClick={() => decrement(item.id)}
+                      >
+                        <IoIosArrowDown size={20} />
+                      </button>
+                    </div>
                   </div>
-                </section>
-              );
-            })
-          )}
-        </div>
-        {basket?.length !== 0 && (
-          <div className={classes.subtotal}>
-            <div>
-              <p>Subtotal ({basket?.length} items)</p>
-              <CurrencyFormat amount={total} />
-            </div>
-            <span>
-              <input type="checkbox" />
-              <small>This order Contains a Gift</small>
-            </span>
-            <Link to="payments">Continue to Checkout</Link>
+                  // <div className={classes.cart_product} key={i}>
+                  //   <ProductCard
+                  //     renderAdd={false}
+                  //     product={item}
+                  //     renderDesc={true}
+                  //     flex={true}
+                  //   />
+                  //   <div className={classes.quantity_control}>
+                  //     <button onClick={() => increment(item)}>
+                  //       <IoIosArrowUp size={20} />
+                  //     </button>
+                  //     <span>{item.amount}</span>
+                  //     <button onClick={() => decrement(item.id)}>
+                  //       <IoIosArrowDown size={20} />
+                  //     </button>
+                  //   </div>
+                  // </div>
+                );
+              })
+            )}
           </div>
-        )}
-      </section>
-    </LayOut>
+          {basket?.length !== 0 && (
+            <div className={classes.subtotal}>
+              <div>
+                <p>Subtotal ({basket?.length} items)</p>
+                <CurrencyFormat amount={total} />
+              </div>
+              <span>
+                <input type="checkbox" />
+                <small>This order Contains a Gift</small>
+              </span>
+              <Link to="payments">Continue to Checkout</Link>
+            </div>
+          )}
+        </section>
+      </LayOut>
+    </>
   );
 }
 
