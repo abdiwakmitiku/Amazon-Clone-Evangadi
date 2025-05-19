@@ -6,6 +6,7 @@ import ProductCard from "../../components/Product/ProductCard";
 import CurrencyFormat from "../../components/CurrencyFormat/CurrencyFormat";
 import { Link } from "react-router";
 import { Type } from "../../Utility/action.type";
+import { IoIosArrowUp,IoIosArrowDown} from "react-icons/io";
 
 function Cart() {
   const [{ basket, user }, dispatch] = useContext(DataContext);
@@ -38,7 +39,7 @@ function Cart() {
           ) : (
             basket?.map((item, i) => {
               return (
-                <section>
+                <section className={classes.cart_product}>
                   <ProductCard
                     renderAdd={false}
                     key={i}
@@ -46,10 +47,14 @@ function Cart() {
                     renderDesc={true}
                     flex={true}
                   />
-                  <div>
-                    <button onClick={() => increment(item)}>+</button>
+                  <div className={classes.btn.container}>
+                    <button className={classes.btn} onClick={() => increment(item)}>
+                      <IoIosArrowUp size={20}/>
+                    </button>
                     <span>{item.amount}</span>
-                    <button onClick={() => decrement(item.id)}>-</button>
+                    <button className={classes.btn} onClick={() => decrement(item.id)}>
+                      <IoIosArrowDown size={20}/>
+                    </button>
                   </div>
                 </section>
               );
