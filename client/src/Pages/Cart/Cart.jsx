@@ -40,13 +40,16 @@ function Cart() {
             <p>Opps! No Item in Your Cart</p>
           ) : (
             basket?.map((item, i) => (
-              <section className={classes.cart_product} key={i}>
-                <ProductCard
-                  renderAdd={false}
-                  product={item}
-                  renderDesc={true}
-                  flex={true}
-                />
+              <section className={classes.cart_align}>
+                {" "}
+                <div className={classes.cart_product} key={i}>
+                  <ProductCard
+                    renderAdd={false}
+                    product={item}
+                    renderDesc={true}
+                    flex={true}
+                  />
+                </div>
                 <div className={classes.btn_container}>
                   <button
                     className={classes.btn}
