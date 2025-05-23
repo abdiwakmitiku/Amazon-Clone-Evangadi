@@ -6,7 +6,7 @@ import { Link } from "react-router";
 import { DataContext } from "../DataProvider/DataProvider";
 import { Type } from "../../Utility/action.type";
 
-function ProductCard({ product, flex, renderDesc,renderAdd  }) {
+function ProductCard({ product, flex, renderDesc, renderAdd, cartMode }) {
   const { image, title, id, rating, price, description } = product;
 
   const [state, dispatch] = useContext(DataContext);
@@ -31,21 +31,20 @@ function ProductCard({ product, flex, renderDesc,renderAdd  }) {
   return (
     <>
       <div
-        style={{ paddingTop: "60px" }}
-        className={`${classes.card__container} ${
-          flex ? classes.product_flexed : ""
-        } `}
+        className={`${classes.card__container} 
+              ${flex ? classes.product_flexed : ""} 
+              ${cartMode ? classes.cart__card : ""}`}
       >
         <Link to={`/products/${id}`}>
           <img src={image} alt="" />
         </Link>
         <div>
-          {renderDesc ? (
-            <h3>{title}</h3>
-          ) : (
-            <h3>{truncate(title, 45)}</h3>
+          {renderDesc ? <h3>{title}</h3> : <h3>{truncate(title, 45)}</h3>}
+          {renderDesc && (
+            <div style={{ width: "700px", fontWeight: "500" }}>
+              {description}
+            </div>
           )}
-          {renderDesc && <div style={{ width: "700px", fontWeight: "500" }}>{description}</div>}
           <div className={classes.rating}>
             <Rating value={rating?.rate} precision={0.1} />
 
@@ -54,8 +53,11 @@ function ProductCard({ product, flex, renderDesc,renderAdd  }) {
           <div>
             <CurrencyFormat amount={price} />
           </div>
-         { renderAdd &&  <button className={classes.button} onClick={addToCart}>Add to Cart</button>}
-
+          {renderAdd && (
+            <button className={classes.button} onClick={addToCart}>
+              Add to Cart
+            </button>
+          )}
         </div>
       </div>
     </>
