@@ -41,11 +41,11 @@ function ProductCard({ product, flex, renderDesc,renderAdd  }) {
         </Link>
         <div>
           {renderDesc ? (
-            <h3 style={{ fontSize: "4vh" }}>{title}</h3>
+            <h3>{title}</h3>
           ) : (
             <h3>{truncate(title, 45)}</h3>
           )}
-          {renderDesc && <div style={{ width: "550px" }}>{description}</div>}
+          {renderDesc && <div style={{ width: "700px", fontWeight: "500" }}>{description}</div>}
           <div className={classes.rating}>
             <Rating value={rating?.rate} precision={0.1} />
 

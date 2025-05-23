@@ -1,5 +1,5 @@
 .card__container {
-  width: 250px;
+  width: 250%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   padding: 10px;
   color: black;
@@ -57,7 +57,7 @@
   height: auto;
   display: flex !important;
   gap: 50px;
-  margin: 0 20%; /*NOT MUST*/
+  /* margin: 0 20%; NOT MUST */
 }
 .product_flexed h3 {
   padding: 20px 0px;
@@ -72,7 +72,7 @@
   height: 50vh;
 }
 .product_flexed img {
-  width: 300px !important;
+  width: 200px !important;
   height: auto;
 }
 @media screen and (max-width: 768px) {
